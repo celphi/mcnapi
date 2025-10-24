@@ -1,0 +1,92 @@
+body {
+  font-family: system-ui, Arial, sans-serif;
+  margin: 2rem;
+  background: #fdfdfd;
+  color: #222;
+}
+
+.flex {
+  display: flex;
+}
+
+.space_between {
+  justify-content: space-between;
+}
+
+.align_items_center {
+  align-items: center;
+}
+
+.margin_bottom_10 {
+  margin-bottom: 10px;
+}
+
+label {
+  font-weight: 600;
+}
+
+input,
+select,
+button {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+button {
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #f6f6f6;
+}
+button:hover {
+  background: #eee;
+}
+
+fieldset {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+fieldset#payment_details {
+  max-width: 350px;
+}
+
+legend {
+  padding: 0 0.5rem;
+  font-weight: 700;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+#log {
+  white-space: pre-wrap;
+  background: #f6f8fa;
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px solid #eee;
+  font-family: monospace;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+iframe {
+  width: 100%;
+  height: 540px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.token-box {
+  margin-top: 0.75rem;
+  font-family: monospace;
+  background: #fafafa;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CCBill 3-D Secure Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/css/demo-3ds.css" />
+  <!-- CCBill Advanced Widget -->
+  <script src="https://js.ccbill.com/v1.13.1/ccbill-advanced-widget.js"></script>
+<script src="/config.js"></script>
+</head>
+<body>
+  <h1>CCBill 3-D Secure Demo</h1>
+  <p>This page fetches tokens and submits a payment that may require a 3-D Secure challenge.</p>
+
+  <!-- Payment form -->
+  <form id="payForm" autocomplete="off">
+    <fieldset id="payment_details">
+      <legend>Payment Details</legend>
+
+      <div class="flex space_between align_items_center margin_bottom_10">
+        <label for="force3ds">Force 3DS demo</label>
+        <input id="force3ds" type="checkbox" />
+      </div>
+
+      <div class="flex space_between align_items_center margin_bottom_10">
+        <label for="firstName">First name</label>
+        <input id="firstName" name="firstName" data-ccbill="firstName" value="Jane" required />
+      </div>
+      <div class="flex space_between align_items_center margin_bottom_10">
+        <label for="lastName">Last name</label>
+        <input id="lastName" name="lastName" data-ccbill="lastName" value="Demo" required />
+      </div>
+
+      <div class="flex space_between align_items_center margin_bottom_10">
+        <label for="amount">Amount</label>
+        <input id="amount" name="amount" value="1.00" data-ccbill="amount" required />
+      </div>
+
+      <!-- currencyCode must be numeric (USD=840, EUR=978, etc.) -->
+      <div class="flex space_between align_items_center margin_bottom_10">
+        <label for="currencyCode">Currency</label>
+        <select id="currencyCode" name="currencyCode" data-ccbill="currencyCode">
+          <option value="840" selected>USD</option>
+          <option value="978">EUR</option>
+        </select>
+      </div>
+
+      <div class="flex space_between align_items_center margin_bottom_10">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" value="demo@example.com" data-ccbill="email" required />
+      </div>
+
+      <div class="flex space_between align_items_center margin_bottom_10">
+        <label for="cardNumber">Card Number</label>
+        <input id="cardNumber" name="cardNumber" data-ccbill="cardNumber" placeholder="4111111111111111" inputmode="numeric" required />
+      </div>
+
+      <div class="flex space_between align_items_center margin_bottom_10">
+        <label for="expMonth">Exp. Month</label>
+        <input id="expMonth" name="expMonth" data-ccbill="expMonth" value="01" placeholder="MM" required />
+      </div>
+
+      <div class="flex space_between align_items_center margin_bottom_10">
+        <label for="expYear">Exp. Year</label>
+        <input id="expYear" name="expYear" data-ccbill="expYear" value="2030" placeholder="YYYY" required />
+      </div>
+
+      <div class="flex space_between align_items_center margin_bottom_10">
+        <label for="cvv2">CVV</label>
+        <input id="cvv2" name="cvv2" data-ccbill="cvv2" placeholder="123" required />
+      </div>
+
+      <div class="flex space_between align_items_center margin_bottom_10">
+        <label for="nameOnCard">Name on Card</label>
+        <input id="nameOnCard" name="nameOnCard" data-ccbill="nameOnCard" placeholder="Jane Demo" />
+      </div>
+
+      <div class="flex space_between align_items_center margin_bottom_10">
+        <label for="address">Address</label>
+        <input id="address" name="address" data-ccbill="address" placeholder="123 Demo St" />
+      </div>
+
+      <div class="flex space_between align_items_center margin_bottom_10">
+        <label for="city">City</label>
+        <input id="city" name="city" data-ccbill="city" placeholder="Phoenix" />
+      </div>
+
+      <div class="flex space_between align_items_center margin_bottom_10">
+        <label for="state">State</label>
+        <input id="state" name="state" data-ccbill="state" placeholder="AZ" />
+      </div>
+
+      <div class="flex space_between align_items_center margin_bottom_10">
+        <label for="postalCode">Postal</label>
+        <input id="postalCode" name="postalCode" data-ccbill="postalCode" placeholder="85001" />
+      </div>
+
+      <div class="flex space_between align_items_center margin_bottom_10">
+        <label for="country">Country</label>
+        <input id="country" name="country" data-ccbill="country" value="US" />
+      </div>
+
+      <div class="actions">
+        <button id="btnPay" type="submit">Pay (start 3DS if required)</button>
+      </div>
+    </fieldset>
+  </form>
+
+  <h2>3-D Secure Challenge</h2>
+  <p>If the charge requires 3-D Secure, the ACS page will open below:</p>
+  <iframe id="acsFrame" title="3-D Secure Challenge" hidden></iframe>
+
+  <h2>Log</h2>
+  <pre id="log">Ready.</pre>
+
+  <script src="/js/demo-3ds.js" defer></script>
+</body>
+</html>
